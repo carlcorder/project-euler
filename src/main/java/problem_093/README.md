@@ -2,8 +2,8 @@
 
 ## Problem description
 
-> By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four arithmetic operations
-> (+, −, *, /) and brackets/parentheses, it is possible to form different positive integer targets.
+> By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four arithmetic
+> operations (+, −, *, /) and brackets/parentheses, it is possible to form different positive integer targets.
 >
 > For example,
 >
@@ -22,17 +22,23 @@
 
 ### Analysis
 
- By brute force:
+By brute force:
 
- There are 10C4 = 210 possible combinations of strings 'abcd' that we can build with the digits [0-9]
- For each string we can permute it 4! = 24 different ways
- Using the Catalan numbers, we know there are 5 distinct ways of grouping {a,b,c,d}:
- 1. ((ab)c)d   2. (a(bc))d    3. (ab)(cd)    4. a((bc)d)    5. a(b(cd))
- and each must be evaluated because PEMDAS does not remove all ambiguity from the order of operations
- Finally, there are 4^3 = 64 ways to choose the three binary operators that go between the four digits
+There are 10C4 = 210 possible combinations of strings 'abcd' that we can build with the digits [0-9]
+For each string we can permute it 4! = 24 different ways
+Using the Catalan numbers, we know there are 5 distinct ways of grouping {a,b,c,d}:
 
- Total there is (10C4)(4!)(C_4)(4^3) = (210)(24)(5)(64) = 1,612,800 possibilities that we need to check. However a
- significant percentage will be redundant calculations.
+1. ((ab)c)d
+2. (a(bc))d
+3. (ab)(cd)
+4. a((bc)d)
+5. a(b(cd))
+
+and each must be evaluated because PEMDAS does not remove all ambiguity from the order of operations.
+Finally, there are 4^3 = 64 ways to choose the three binary operators that go between the four digits
+
+Total there is (10C4)(4!)(C_4)(4^3) = (210)(24)(5)(64) = 1,612,800 possibilities that we need to check. However a
+significant percentage will be redundant calculations.
 
 ### Findings
 
