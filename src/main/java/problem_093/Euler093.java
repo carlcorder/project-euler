@@ -1,46 +1,9 @@
+package problem_093;
+
 import java.util.*;
-
-/**
-
- By using each of the digits from the set, {1, 2, 3, 4}, exactly once, and making use of the four arithmetic operations
- (+, −, *, /) and brackets/parentheses, it is possible to form different positive integer targets.
-
- For example,
-
- 8 = (4 * (1 + 3)) / 2
- 14 = 4 * (3 + 1 / 2)
- 19 = 4 * (2 + 3) − 1
- 36 = 3 * 4 * (2 + 1)
-
- Note that concatenations of the digits, like 12 + 34, are not allowed.
-
- Using the set, {1, 2, 3, 4}, it is possible to obtain thirty-one different target numbers of which 36 is the maximum,
- and each of the numbers 1 to 28 can be obtained before encountering the first non-expressible number.
-
- Find the set of four distinct digits, a < b < c < d, for which the longest set of consecutive positive integers, 1 to n,
- can be obtained, giving your answer as a string: abcd.
-
- */
-
-/*
-
- NOTES:
-
- There are 10C4 = 210 possible combinations of strings 'abcd' that we can build with the digits [0-9]
- For each string we can permute it 4! = 24 different ways
- Using the Catalan numbers, we know there are 5 distinct ways of grouping {a,b,c,d}:
- 1. ((ab)c)d   2. (a(bc))d    3. (ab)(cd)    4. a((bc)d)    5. a(b(cd))
- and they must each be evaluated because PEMDAS does not remove all ambiguity from the order of operations
- Finally, there are 4^3 = 64 ways to choose the three binary operators that go between the four digits
-
- Total there is (10C4)(4!)(C_4)(4^3) = (210)(24)(5)(64) = 1,612,800 possibilities that we need to check. However a
- significant percentage will be redundant calculations.
-
- */
 
 public class Euler093 {
 
-    // http://stackoverflow.com/questions/2960826/most-elegant-way-to-apply-an-operator-found-as-a-string-in-java
     // integer division can give us false results
     public enum Operation {
 
@@ -52,7 +15,7 @@ public class Euler093 {
 
         private String symbol;
 
-        private Operation(String symbol) {
+        Operation(String symbol) {
             this.symbol = symbol;
         }
 
@@ -201,7 +164,6 @@ public class Euler093 {
         }
 
         getResults(maxDigits[0], maxDigits[1], maxDigits[2], maxDigits[3], maxConsec);// 1258
-
         System.out.println("Took: " + (System.currentTimeMillis() - startTime + "ms"));
     }
 
